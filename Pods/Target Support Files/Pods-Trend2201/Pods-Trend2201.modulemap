@@ -1,0 +1,6 @@
+framework module Pods_Trend2201 {
+  umbrella header "Pods-Trend2201-umbrella.h"
+
+  export *
+  module * { export * }
+}

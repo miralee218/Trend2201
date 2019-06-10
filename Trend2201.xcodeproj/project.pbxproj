@@ -13,9 +13,14 @@
 		497BE97322AE2FD800597F2E /* Trend2201.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 497BE97122AE2FD800597F2E /* Trend2201.xcdatamodeld */; };
 		497BE97522AE2FDB00597F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497BE97422AE2FDB00597F2E /* Assets.xcassets */; };
 		497BE97822AE2FDB00597F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 497BE97622AE2FDB00597F2E /* LaunchScreen.storyboard */; };
+		497BE98322AE31E300597F2E /* trend2201.json in Resources */ = {isa = PBXBuildFile; fileRef = 497BE98222AE31E200597F2E /* trend2201.json */; };
+		497BE98722AE32DB00597F2E /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98622AE32DB00597F2E /* Root.swift */; };
+		497BE98B22AE497A00597F2E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98A22AE497A00597F2E /* DataProvider.swift */; };
+		C2947EA7A08A77A6C953E9FD /* Pods_Trend2201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C174695E45A2476F4361850 /* Pods-Trend2201.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trend2201.release.xcconfig"; path = "Target Support Files/Pods-Trend2201/Pods-Trend2201.release.xcconfig"; sourceTree = "<group>"; };
 		497BE96722AE2FD800597F2E /* Trend2201.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trend2201.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		497BE96A22AE2FD800597F2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		497BE96C22AE2FD800597F2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,11 @@
 		497BE97422AE2FDB00597F2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		497BE97722AE2FDB00597F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		497BE97922AE2FDB00597F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		497BE98222AE31E200597F2E /* trend2201.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trend2201.json; sourceTree = "<group>"; };
+		497BE98622AE32DB00597F2E /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		497BE98A22AE497A00597F2E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		AA70B15BAF23CB64317F31F9 /* Pods-Trend2201.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trend2201.debug.xcconfig"; path = "Target Support Files/Pods-Trend2201/Pods-Trend2201.debug.xcconfig"; sourceTree = "<group>"; };
+		CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trend2201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2947EA7A08A77A6C953E9FD /* Pods_Trend2201.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +53,8 @@
 			children = (
 				497BE96922AE2FD800597F2E /* Trend2201 */,
 				497BE96822AE2FD800597F2E /* Products */,
+				567A5C45E44DFCD86E209C07 /* Pods */,
+				6346E06C935030034B203689 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +71,9 @@
 			children = (
 				497BE96A22AE2FD800597F2E /* AppDelegate.swift */,
 				497BE96C22AE2FD800597F2E /* ViewController.swift */,
+				497BE98122AE31D500597F2E /* Controller */,
+				497BE98022AE31CF00597F2E /* View */,
+				497BE97F22AE31C200597F2E /* Model */,
 				497BE96E22AE2FD800597F2E /* Main.storyboard */,
 				497BE97422AE2FDB00597F2E /* Assets.xcassets */,
 				497BE97622AE2FDB00597F2E /* LaunchScreen.storyboard */,
@@ -67,6 +83,47 @@
 			path = Trend2201;
 			sourceTree = "<group>";
 		};
+		497BE97F22AE31C200597F2E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				497BE98222AE31E200597F2E /* trend2201.json */,
+				497BE98622AE32DB00597F2E /* Root.swift */,
+				497BE98A22AE497A00597F2E /* DataProvider.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		497BE98022AE31CF00597F2E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		497BE98122AE31D500597F2E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		567A5C45E44DFCD86E209C07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA70B15BAF23CB64317F31F9 /* Pods-Trend2201.debug.xcconfig */,
+				0C174695E45A2476F4361850 /* Pods-Trend2201.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6346E06C935030034B203689 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +131,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 497BE97C22AE2FDB00597F2E /* Build configuration list for PBXNativeTarget "Trend2201" */;
 			buildPhases = (
+				867BDB83A231BECC7F6B4D0F /* [CP] Check Pods Manifest.lock */,
 				497BE96322AE2FD800597F2E /* Sources */,
 				497BE96422AE2FD800597F2E /* Frameworks */,
 				497BE96522AE2FD800597F2E /* Resources */,
@@ -125,6 +183,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497BE98322AE31E300597F2E /* trend2201.json in Resources */,
 				497BE97822AE2FDB00597F2E /* LaunchScreen.storyboard in Resources */,
 				497BE97522AE2FDB00597F2E /* Assets.xcassets in Resources */,
 				497BE97022AE2FD800597F2E /* Main.storyboard in Resources */,
@@ -133,12 +192,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		867BDB83A231BECC7F6B4D0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trend2201-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		497BE96322AE2FD800597F2E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497BE98B22AE497A00597F2E /* DataProvider.swift in Sources */,
 				497BE97322AE2FD800597F2E /* Trend2201.xcdatamodeld in Sources */,
+				497BE98722AE32DB00597F2E /* Root.swift in Sources */,
 				497BE96D22AE2FD800597F2E /* ViewController.swift in Sources */,
 				497BE96B22AE2FD800597F2E /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +370,7 @@
 		};
 		497BE97D22AE2FDB00597F2E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA70B15BAF23CB64317F31F9 /* Pods-Trend2201.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +389,7 @@
 		};
 		497BE97E22AE2FDB00597F2E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C174695E45A2476F4361850 /* Pods-Trend2201.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
