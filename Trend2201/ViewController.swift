@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     
     var stk = Int() //商品代碼
     
-    var c = String() //參考價
+    var c = Double() //參考價
     
-    var tp = String() //漲停價
+    var tp = Double() //漲停價
     
-    var bp = String() //跌停價
+    var bp = Double() //跌停價
     
     var st = Int() //基準時間
     
@@ -42,9 +42,9 @@ class ViewController: UIViewController {
         
         guard let root = root else { return }
         self.stk = Int(root.root.stk) ?? 0
-        self.c = root.root.c
-        self.tp = root.root.tp
-        self.bp = root.root.bp
+        self.c = Double(root.root.c) ?? 0.0
+        self.tp = Double(root.root.tp) ?? 0.0
+        self.bp = Double(root.root.bp) ?? 0.0
         self.st = Int(root.root.st) ?? 0
         
         for minute in root.root.tick{

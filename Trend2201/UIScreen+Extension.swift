@@ -16,6 +16,4 @@ extension UIScreen {
     
     static let chartWidth = width * 5 / 6
     
-    static let chartHeight = height * 1 / 3
-    
 }
