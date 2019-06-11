@@ -14,12 +14,12 @@ class DataProvider {
     
     private init () {}
     
-    func loadData(completion: @escaping (Result<Root, Error>) -> Void) {
+    func loadData(completion: @escaping (Result<Trend, Error>) -> Void) {
 
         do {
             let url = Bundle.main.url(forResource: "trend2201", withExtension: "json")!
             let data = try Data(contentsOf: url)
-            let result = try JSONDecoder().decode(Root.self, from: data)
+            let result = try JSONDecoder().decode(Trend.self, from: data)
             completion(Result.success(result))
 
         }

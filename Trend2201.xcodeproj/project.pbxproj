@@ -14,8 +14,10 @@
 		497BE97522AE2FDB00597F2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497BE97422AE2FDB00597F2E /* Assets.xcassets */; };
 		497BE97822AE2FDB00597F2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 497BE97622AE2FDB00597F2E /* LaunchScreen.storyboard */; };
 		497BE98322AE31E300597F2E /* trend2201.json in Resources */ = {isa = PBXBuildFile; fileRef = 497BE98222AE31E200597F2E /* trend2201.json */; };
-		497BE98722AE32DB00597F2E /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98622AE32DB00597F2E /* Root.swift */; };
+		497BE98722AE32DB00597F2E /* TrendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98622AE32DB00597F2E /* TrendModel.swift */; };
 		497BE98B22AE497A00597F2E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98A22AE497A00597F2E /* DataProvider.swift */; };
+		497BE98D22AE7ED500597F2E /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE98C22AE7ED500597F2E /* StockChartViewController.swift */; };
+		497BE99522AF380200597F2E /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE99422AF380200597F2E /* UIScreen+Extension.swift */; };
 		C2947EA7A08A77A6C953E9FD /* Pods_Trend2201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +32,10 @@
 		497BE97722AE2FDB00597F2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		497BE97922AE2FDB00597F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		497BE98222AE31E200597F2E /* trend2201.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trend2201.json; sourceTree = "<group>"; };
-		497BE98622AE32DB00597F2E /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		497BE98622AE32DB00597F2E /* TrendModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendModel.swift; sourceTree = "<group>"; };
 		497BE98A22AE497A00597F2E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		497BE98C22AE7ED500597F2E /* StockChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
+		497BE99422AF380200597F2E /* UIScreen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extension.swift"; sourceTree = "<group>"; };
 		AA70B15BAF23CB64317F31F9 /* Pods-Trend2201.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trend2201.debug.xcconfig"; path = "Target Support Files/Pods-Trend2201/Pods-Trend2201.debug.xcconfig"; sourceTree = "<group>"; };
 		CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trend2201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,6 +75,7 @@
 			children = (
 				497BE96A22AE2FD800597F2E /* AppDelegate.swift */,
 				497BE96C22AE2FD800597F2E /* ViewController.swift */,
+				497BE99422AF380200597F2E /* UIScreen+Extension.swift */,
 				497BE98122AE31D500597F2E /* Controller */,
 				497BE98022AE31CF00597F2E /* View */,
 				497BE97F22AE31C200597F2E /* Model */,
@@ -87,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				497BE98222AE31E200597F2E /* trend2201.json */,
-				497BE98622AE32DB00597F2E /* Root.swift */,
+				497BE98622AE32DB00597F2E /* TrendModel.swift */,
 				497BE98A22AE497A00597F2E /* DataProvider.swift */,
 			);
 			path = Model;
@@ -103,6 +108,7 @@
 		497BE98122AE31D500597F2E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				497BE98C22AE7ED500597F2E /* StockChartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -224,9 +230,11 @@
 			files = (
 				497BE98B22AE497A00597F2E /* DataProvider.swift in Sources */,
 				497BE97322AE2FD800597F2E /* Trend2201.xcdatamodeld in Sources */,
-				497BE98722AE32DB00597F2E /* Root.swift in Sources */,
+				497BE98722AE32DB00597F2E /* TrendModel.swift in Sources */,
 				497BE96D22AE2FD800597F2E /* ViewController.swift in Sources */,
+				497BE98D22AE7ED500597F2E /* StockChartViewController.swift in Sources */,
 				497BE96B22AE2FD800597F2E /* AppDelegate.swift in Sources */,
+				497BE99522AF380200597F2E /* UIScreen+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

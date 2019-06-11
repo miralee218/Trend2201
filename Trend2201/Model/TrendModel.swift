@@ -1,5 +1,5 @@
 //
-//  TrendData.swift
+//  TrendModel.swift
 //  Trend2201
 //
 //  Created by Mira on 2019/6/10.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Root: Codable {
+struct Trend: Codable {
 
-    let root: RootData
+    let root: TrendData
     
-    struct RootData: Codable {
+    struct TrendData: Codable {
         
         let stk: String //商品代碼
         
