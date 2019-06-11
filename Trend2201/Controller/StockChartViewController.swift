@@ -11,8 +11,8 @@ import UIKit
 class StockChartViewController: ViewController {
     
     var chartBackgroundView = UIView()
-    let xPonit = 50.0
-    let yPonit = 100.0
+    let xPoint = 50.0
+    let yPoint = 100.0
     let chartWidth = UIScreen.chartWidth
     let chartHeight = UIScreen.chartWidth
     let labelHeight = 24.0
@@ -21,8 +21,8 @@ class StockChartViewController: ViewController {
     let gridCount = 4.5
     
     var barChartBackgroundView = UIView()
-    let barXPonit = 50.0
-    let barYPonit = 100.0 + UIScreen.chartWidth + 50
+    let barXPoint = 50.0
+    let barYPoint = 100.0 + UIScreen.chartWidth + 50
     let barWidth = UIScreen.chartWidth
     let barHeight = UIScreen.chartWidth / 3
 
@@ -43,6 +43,9 @@ class StockChartViewController: ViewController {
         setMaxChartView()
         setMinChartView()
         
+        drawBarGrid()
+        setBarChartView()
+        
     }
     
     func setStokeName() {
@@ -56,13 +59,13 @@ class StockChartViewController: ViewController {
     
     func setBackgrounds() {
         
-        chartBackgroundView = UIView(frame: CGRect(x: xPonit, y: yPonit, width: chartWidth, height: chartHeight))
+        chartBackgroundView = UIView(frame: CGRect(x: xPoint, y: yPoint, width: chartWidth, height: chartHeight))
         
         chartBackgroundView.backgroundColor = .black
         
         view.addSubview(chartBackgroundView)
         
-        barChartBackgroundView = UIView(frame: CGRect(x: barXPonit, y: barYPonit, width: barWidth, height: barHeight))
+        barChartBackgroundView = UIView(frame: CGRect(x: barXPoint, y: barYPoint, width: barWidth, height: barHeight))
         
         barChartBackgroundView.backgroundColor = .black
         
@@ -78,7 +81,7 @@ class StockChartViewController: ViewController {
             
             let latter = Double(index) * labelHeight / Double(indexCount)
             
-            let label = UILabel(frame: CGRect(x: -xPonit, y: former - latter, width: labelWidth, height: labelHeight))
+            let label = UILabel(frame: CGRect(x: -xPoint, y: former - latter, width: labelWidth, height: labelHeight))
             
             switch index {
                 
@@ -150,45 +153,11 @@ class StockChartViewController: ViewController {
         let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
         let path = UIBezierPath()
         
-        path.move(to: CGPoint(x: chartWidth - xPonit, y: -yPonit))
-        path.addLine(to: CGPoint(x: chartWidth - xPonit, y: chartHeight - yPonit))
+        path.move(to: CGPoint(x: chartWidth - xPoint, y: -yPoint))
+        path.addLine(to: CGPoint(x: chartWidth - xPoint, y: chartHeight - yPoint))
         
         ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
     
-        for index in 0...indexCount {
-            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
-            let path = UIBezierPath()
-            
-            
-            
-            path.transCoMove(to: CGPoint(x: 0, y: chartWidth * Double(index) / Double(indexCount)))
-            path.transCoAddLine(to: CGPoint(x: chartWidth, y: chartWidth * Double(index) / Double(indexCount)))
-            
-            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
-        }
-    }
-    
-    
-    func drawBarGrid() {
-        
-        for index in stride(from: 0, to: 10, by: 2) {
-            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
-            let path = UIBezierPath()
-            
-            path.transCoMove(to: CGPoint(x: chartWidth * Double(index) / 9, y: 0))
-            path.transCoAddLine(to: CGPoint(x: chartWidth * Double(index) / 9, y: chartWidth))
-            
-            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
-        }
-        
-        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
-        let path = UIBezierPath()
-        
-        path.move(to: CGPoint(x: chartWidth - xPonit, y: -yPonit))
-        path.addLine(to: CGPoint(x: chartWidth - xPonit, y: chartHeight - yPonit))
-        
-        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
-        
         for index in 0...indexCount {
             let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
             let path = UIBezierPath()
@@ -205,7 +174,7 @@ class StockChartViewController: ViewController {
     func setChartView() {
         var tempX = Double()
         var tempY = Double()
-        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.red, fillColor: CGColor.redAlpha, layerFrame: chartBackgroundView.frame)
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, fillColor: CGColor.redAlpha, layerFrame: chartBackgroundView.frame)
         let path = UIBezierPath()
       
         path.transCoMove(to: CGPoint(x: 2, y: chartWidth / 2))
@@ -262,6 +231,55 @@ class StockChartViewController: ViewController {
         label.text = String(minValue)
         chartBackgroundView.addSubview(label)
 
+    }
+    
+    func drawBarGrid() {
+        
+        for index in stride(from: 0, to: 10, by: 2) {
+            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
+            let path = UIBezierPath()
+            
+            path.move(to: CGPoint(x: barWidth * Double(index) / 9 - barXPoint, y: -barYPoint + barHeight))
+            path.addLine(to: CGPoint(x: barWidth * Double(index) / 9 - barXPoint, y: -barYPoint + barHeight * 2))
+            
+            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: barChartBackgroundView)
+        }
+        
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: barChartBackgroundView.frame)
+        let path = UIBezierPath()
+        
+        path.move(to: CGPoint(x: barWidth - barXPoint, y: -barYPoint))
+        path.addLine(to: CGPoint(x: barWidth - barXPoint, y: barHeight - barYPoint))
+        
+        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: barChartBackgroundView)
+        
+        for index in 0...3 {
+            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: barChartBackgroundView.frame)
+            let path = UIBezierPath()
+            
+            path.move(to: CGPoint(x: 0 - barXPoint, y: (barHeight * Double(index) / 3 ) - barYPoint))
+            path.addLine(to: CGPoint(x: barWidth - barXPoint, y: (barHeight * Double(index) / 3 ) - barYPoint))
+            
+            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: barChartBackgroundView)
+        }
+    }
+    
+    func setBarChartView() {
+//        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.blue, layerFrame: barChartBackgroundView.frame)
+//        let path = UIBezierPath()
+//        
+////        path.transCoMove(to: CGPoint(x: 0, y: 0))
+//        path.move(to: CGPoint(x: -barXPoint, y: -barYPoint))
+//        for index in tickV.indices {
+//            let lineX = Double(tickT[index]) *  barWidth / Double(tickT.last!)
+//            let lineY = (Double(tickV[index])) * barWidth / (c * 0.1 * 2) + barWidth / 2
+//            path.transCoAddLine(to: CGPoint(x: lineX + 2, y: lineY))
+//        }
+//        
+//        path.addLine(to: CGPoint(x: barWidth - barXPoint, y: barHeight - barYPoint))
+//        
+//        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: barChartBackgroundView)
+        
     }
 
 

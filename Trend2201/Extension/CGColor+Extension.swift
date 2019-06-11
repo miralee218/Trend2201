@@ -18,6 +18,8 @@ extension CGColor {
     
     static let green = UIColor.green.cgColor
     
+    static let blue = UIColor.blue.cgColor
+    
     static let gray = UIColor.lightGray.cgColor
     
 }
