@@ -11,154 +11,223 @@ import UIKit
 class StockChartViewController: ViewController {
     
     var chartBackgroundView = UIView()
+    let xPonit = 50.0
+    let yPonit = 100.0
+    let chartWidth = UIScreen.chartWidth
+    let chartHeight = UIScreen.chartWidth
+    let labelHeight = 24.0
+    let labelWidth = 50.0
+    var indexCount = Int()
+    let gridCount = 4.5
+    
+//    let aaa = LineChart()
+ 
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        indexCount = GridManager.getYAxisCount(allTime: tickT) - 1
+//        self.aaa.frame = CGRect(x: xPonit, y: yPonit, width: chartWidth, height: chartHeight)
+        
+//        aaa.backgroundColor = .red
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setStokeName()
+        setChartBackground()
+        drawGrid()
+        setYLabel()
+        setXLabel()
+        setChartView()
+        setMaxChartView()
+        setMinChartView()
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+//        view.addSubview(aaa)
+    }
+    
+    func setStokeName() {
+        
         let label = UILabel(frame: CGRect(x: 50, y: 70, width: 150, height: 22))
         label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         label.text = "商品代碼：" + String(stk)
         view.addSubview(label)
         
-        chartBackgroundView = UIView(frame: CGRect(x: 50, y: 100, width: UIScreen.chartWidth, height: UIScreen.chartWidth))
+    }
+    
+    func setChartBackground() {
+        
+        chartBackgroundView = UIView(frame: CGRect(x: xPonit, y: yPonit, width: chartWidth, height: chartHeight))
+        
         chartBackgroundView.backgroundColor = .black
+        
         view.addSubview(chartBackgroundView)
         
-        
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        drawGrid()
-        addYLabel()
-        addXLabel()
-        getAllPoint(root)
     }
     
+    func setYLabel() {
 
-
-    func addYLabel() {
-
-        for index in 0...4{
-            let label = UILabel(frame: CGRect(x: -45, y: UIScreen.chartWidth * Double(index) / 4 - Double(index) * 6, width: 45, height: 24))
+        for index in 0...indexCount {
+            
+            let former = chartWidth * Double(index) / Double(indexCount)
+            
+            let latter = Double(index) * labelHeight / Double(indexCount)
+            
+            let label = UILabel(frame: CGRect(x: -xPonit, y: former - latter, width: labelWidth, height: labelHeight))
             
             switch index {
+                
             case 0:
-                label.text = String(tp)
-                label.backgroundColor = UIColor.red
-                label.textColor = UIColor.white
+                label.setYLabelStlye(item: Float(tp), bgColor: UIColor.red, textColor: UIColor.white)
             case 1:
-                label.text = String(format: "%.2f", Float(c)*1.05)
-                label.textColor = UIColor.red
+                label.setYLabelStlye(item: Float(c) * 1.05, bgColor: UIColor.clear, textColor: UIColor.red)
             case 2:
-                label.text = String(format: "%.2f", Float(c))
-                label.textColor = UIColor.white
+                label.setYLabelStlye(item: Float(c), bgColor: UIColor.clear, textColor: UIColor.white)
             case 3:
-                label.text = String(format: "%.2f", Float(c)*0.95)
-                label.textColor = UIColor.green
+                label.setYLabelStlye(item: Float(Float(c) * 0.95), bgColor: UIColor.clear, textColor: UIColor.green)
             case 4:
-                label.text = String(format: "%.2f", Float(bp))
-                label.backgroundColor = UIColor(red: 0, green: 0.5, blue: 0, alpha: 1)
-                label.textColor = UIColor.white
+                label.setYLabelStlye(item: Float(bp), bgColor: UIColor(red: 0, green: 0.5, blue: 0, alpha: 1), textColor: UIColor.white)
             default:
                 label.text = "N/A"
+                
             }
-
+            
             label.textAlignment = .right
 
             chartBackgroundView.addSubview(label)
         }
 
     }
+
     
-    func addXLabel() {
+    func setXLabel() {
 
-        for index in 0...4 {
-            let label = UILabel(frame: CGRect(x: Double(index) * UIScreen.chartWidth * 2 / 9 - 20, y: UIScreen.chartWidth, width: 40, height: 22))
-
-            if index == 0 {
-                label.text = "09"
-            } else {
-                label.text = "\(index + 9)"
-            }
-            label.textAlignment = .right
+        for index in 0...indexCount {
+            let label = UILabel(frame:
+                CGRect(x: Double(index) * chartWidth / gridCount,
+                       y: chartWidth,
+                       width: labelWidth,
+                       height: labelHeight))
+            
+            label.textAlignment = .left
+            
             label.textColor = UIColor.white
-
+            
+            if index == 0 {
+                
+                label.text = "09"
+                
+            } else {
+                
+                label.text = "\(index + 9)"
+                
+            }
+            
             chartBackgroundView.addSubview(label)
+            
         }
 
-    }
-    
-    
-    func addShapeLayer(_ shapeLayer: CAShapeLayer, path: UIBezierPath, view: UIView) {
-        shapeLayer.path = path.cgPath
-        shapeLayer.position = view.center
-        view.layer.addSublayer(shapeLayer)
     }
     
     
     func drawGrid() {
         
-        let totalTime = tickT.count.quotientAndRemainder(dividingBy: 60)
-        var totalHours = Int()
-        if totalTime.remainder > 0 {
-            totalHours = totalTime.quotient + 1
-        } else {
-            totalHours = totalTime.quotient
-        }
-        // add Y Grid
-        for index in 0...4 {
+        for index in stride(from: 0, to: 10, by: 2) {
             let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
             let path = UIBezierPath()
             
-            path.transCoMove(to: CGPoint(x: 0, y: UIScreen.chartWidth * Double(index) / 4))
-            path.transCoAddLine(to: CGPoint(x: UIScreen.chartWidth, y: UIScreen.chartWidth * Double(index) / 4))
+            path.transCoMove(to: CGPoint(x: chartWidth * Double(index) / 9, y: 0))
+            path.transCoAddLine(to: CGPoint(x: chartWidth * Double(index) / 9, y: chartWidth))
             
-            addShapeLayer(shapeLayer, path: path, view: chartBackgroundView)
+            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
         }
         
-        // add X Grid
-        for index in stride(from: 0, to: 9, by: 2) {
-            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
-            let path = UIBezierPath()
-            
-            path.transCoMove(to: CGPoint(x: UIScreen.chartWidth * Double(index) / 9, y: 0))
-            path.transCoAddLine(to: CGPoint(x: UIScreen.chartWidth * Double(index) / 9, y: UIScreen.chartWidth))
-            
-            addShapeLayer(shapeLayer, path: path, view: chartBackgroundView)
-        }
-        
-        addLastXGrid()
-    }
-    
-    func getAllPoint(_ content: Trend?) {
-        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.red, fillColor: CGColor.redAlpha, layerFrame: chartBackgroundView.frame)
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
         let path = UIBezierPath()
         
+        path.move(to: CGPoint(x: chartWidth - xPonit, y: -yPonit))
+        path.addLine(to: CGPoint(x: chartWidth - xPonit, y: chartHeight - yPonit))
+        
+        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
+    
+        for index in 0...indexCount {
+            let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.gray, layerFrame: chartBackgroundView.frame)
+            let path = UIBezierPath()
+            
+            
+            
+            path.transCoMove(to: CGPoint(x: 0, y: chartWidth * Double(index) / Double(indexCount)))
+            path.transCoAddLine(to: CGPoint(x: chartWidth, y: chartWidth * Double(index) / Double(indexCount)))
+            
+            ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
+        }
+    }
+    
+    func setChartView() {
+        var tempX = Double()
+        var tempY = Double()
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.red, fillColor: CGColor.redAlpha, layerFrame: chartBackgroundView.frame)
+        let path = UIBezierPath()
       
-            path.transCoMove(to: CGPoint(x: 0, y: UIScreen.chartWidth / 2))
-            path.transCoAddLine(to: CGPoint(x: 0, y: UIScreen.chartWidth / 2))
-            for index in tickC.indices {
-                
-                let tempX = Double(tickT[index]) *  UIScreen.chartWidth / Double(tickT.last!)
-                let tempY = (Double(tickC[index] - c)) * UIScreen.chartWidth / (c * 0.1 * 2) + UIScreen.chartWidth / 2
-                path.transCoAddLine(to: CGPoint(x: tempX, y: tempY))
-            }
-            path.transCoAddLine(to: CGPoint(x:  UIScreen.chartWidth, y: UIScreen.chartWidth / 2))
+        path.transCoMove(to: CGPoint(x: 2, y: chartWidth / 2))
+        for index in tickC.indices {
+            tempX = Double(tickT[index]) *  chartWidth / Double(tickT.last!)
+            tempY = (Double(tickC[index] - c)) * chartWidth / (c * 0.1 * 2) + chartWidth / 2
+            path.transCoAddLine(to: CGPoint(x: tempX + 2, y: tempY))
+        }
+
+        path.transCoAddLine(to: CGPoint(x: chartWidth, y: chartWidth / 2))
         
-        
-        addShapeLayer(shapeLayer, path: path, view: chartBackgroundView)
+        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
         
     }
     
-    private func addLastXGrid() {
-        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.red, fillColor: CGColor.redAlpha, layerFrame: chartBackgroundView.frame)
+    func setMaxChartView() {
+        var tempX = Double()
+        var tempY = Double()
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.red, layerFrame: chartBackgroundView.frame)
         let path = UIBezierPath()
+        guard let maxValue = tickH.max(), let maxIndex: Int = tickH.firstIndex(of: maxValue) else { return }
+        
+        path.transCoMove(to: CGPoint(x: 2, y: chartWidth / 2))
 
-        path.transCoMove(to: CGPoint(x: UIScreen.main.bounds.width - 70, y: 0))
-        path.transCoAddLine(to: CGPoint(x: UIScreen.main.bounds.width - 70, y:  UIScreen.main.bounds.width))
+        tempX = Double(maxIndex)
+        tempY = (Double(maxValue - c)) * chartWidth / (c * 0.1 * 2) + chartWidth / 2
+        path.transCoAddLine(to: CGPoint(x: tempX + 2, y: tempY))
+        
+        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
+        
+        let label = UILabel(frame: CGRect(x: tempX + 2, y: chartWidth / 2 - 70, width: 150, height: 22))
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.text = String(maxValue)
+        chartBackgroundView.addSubview(label)
 
-        addShapeLayer(shapeLayer, path: path, view: chartBackgroundView)
+    }
+    
+    func setMinChartView() {
+        var tempX = Double()
+        var tempY = Double()
+        let shapeLayer = ShapeLayerManager.setShapeLayer(strokeColor: CGColor.green, layerFrame: chartBackgroundView.frame)
+        let path = UIBezierPath()
+        guard let minValue = tickL.min(), let minIndex: Int = tickL.firstIndex(of: minValue) else { return }
+        
+        path.transCoMove(to: CGPoint(x: Double(minIndex) * chartWidth / Double(tickT.last!) + 2, y: chartWidth / 2))
+        tempX = Double(minIndex) * chartWidth / Double(tickT.last!)
+        tempY = (Double(minValue - c)) * chartWidth / (c * 0.1 * 2) + chartWidth / 2
+        path.transCoAddLine(to: CGPoint(x: tempX + 2, y: tempY))
+        
+        ShapeLayerManager.addShapeLayer(shapeLayer: shapeLayer, bezierPath: path, view: chartBackgroundView)
+        
+        let label = UILabel(frame: CGRect(x: tempX + 2, y: chartWidth / 2 + 10 , width: 150, height: 22))
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.text = String(minValue)
+        chartBackgroundView.addSubview(label)
+
     }
 
 
@@ -168,12 +237,12 @@ extension UIBezierPath {
     
     func transCoMove(to: CGPoint, y: CGFloat = CGFloat(UIScreen.chartWidth)) {
         
-        self.move(to: CGPoint(x: to.x, y: y - to.y))
+        self.move(to: CGPoint(x: to.x - 50, y: y - to.y - 100))
     }
     
     func transCoAddLine(to: CGPoint, y: CGFloat = CGFloat(UIScreen.chartWidth)) {
         
-        self.addLine(to: CGPoint(x: to.x, y: y - to.y))
+        self.addLine(to: CGPoint(x: to.x - 50, y: y - to.y - 100))
         
     }
 }

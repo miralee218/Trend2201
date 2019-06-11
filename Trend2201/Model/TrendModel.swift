@@ -36,6 +36,10 @@ struct Trend: Codable {
         
         let v: String //量
         
+        let h: String //量
+        
+        let l: String //量
+        
     }
 
 }

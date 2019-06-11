@@ -9,7 +9,15 @@
 import UIKit
 
 extension CGColor {
+    
     static let redAlpha = UIColor.red.cgColor.copy(alpha:0.4)
+    
+    static let greenAlpha = UIColor.green.cgColor.copy(alpha:0.4)
+    
     static let red = UIColor.red.cgColor
+    
+    static let green = UIColor.green.cgColor
+    
     static let gray = UIColor.lightGray.cgColor
+    
 }

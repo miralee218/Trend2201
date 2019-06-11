@@ -13,7 +13,7 @@ class ShapeLayerManager {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = layerFrame
-        shapeLayer.lineWidth = 0.5
+        shapeLayer.lineWidth = 1
         shapeLayer.strokeColor = strokeColor
         
         return shapeLayer
@@ -24,10 +24,16 @@ class ShapeLayerManager {
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = layerFrame
         shapeLayer.fillColor = fillColor
-        
         shapeLayer.lineWidth = 0.5
         shapeLayer.strokeColor = strokeColor
         
         return shapeLayer
     }
+    
+    static func addShapeLayer(shapeLayer: CAShapeLayer, bezierPath: UIBezierPath, view: UIView) {
+        shapeLayer.path = bezierPath.cgPath
+        shapeLayer.position = view.center
+        view.layer.addSublayer(shapeLayer)
+    }
+    
 }
