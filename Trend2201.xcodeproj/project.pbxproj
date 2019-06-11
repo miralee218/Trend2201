@@ -22,8 +22,6 @@
 		497BE9BE22AF84AF00597F2E /* CGColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE9BD22AF84AF00597F2E /* CGColor+Extension.swift */; };
 		497BE9C022AF95EC00597F2E /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE9BF22AF95EC00597F2E /* UILabel+Extension.swift */; };
 		497BE9C222AF9D2C00597F2E /* GridManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE9C122AF9D2C00597F2E /* GridManager.swift */; };
-		497BE9C422AFA43500597F2E /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE9C322AFA43500597F2E /* LineChart.swift */; };
-		497BE9C622AFA92200597F2E /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BE9C522AFA92200597F2E /* GridView.swift */; };
 		C2947EA7A08A77A6C953E9FD /* Pods_Trend2201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +44,6 @@
 		497BE9BD22AF84AF00597F2E /* CGColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+Extension.swift"; sourceTree = "<group>"; };
 		497BE9BF22AF95EC00597F2E /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		497BE9C122AF9D2C00597F2E /* GridManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridManager.swift; sourceTree = "<group>"; };
-		497BE9C322AFA43500597F2E /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		497BE9C522AFA92200597F2E /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		AA70B15BAF23CB64317F31F9 /* Pods-Trend2201.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trend2201.debug.xcconfig"; path = "Target Support Files/Pods-Trend2201/Pods-Trend2201.debug.xcconfig"; sourceTree = "<group>"; };
 		CCEADBE65DF7C505D638D4B5 /* Pods_Trend2201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trend2201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,8 +109,6 @@
 		497BE98022AE31CF00597F2E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				497BE9C322AFA43500597F2E /* LineChart.swift */,
-				497BE9C522AFA92200597F2E /* GridView.swift */,
 				497BE9BB22AF831C00597F2E /* ShapeLayerManager.swift */,
 				497BE9C122AF9D2C00597F2E /* GridManager.swift */,
 			);
@@ -257,13 +251,11 @@
 				497BE98B22AE497A00597F2E /* DataProvider.swift in Sources */,
 				497BE97322AE2FD800597F2E /* Trend2201.xcdatamodeld in Sources */,
 				497BE9C022AF95EC00597F2E /* UILabel+Extension.swift in Sources */,
-				497BE9C622AFA92200597F2E /* GridView.swift in Sources */,
 				497BE98722AE32DB00597F2E /* TrendModel.swift in Sources */,
 				497BE9BC22AF831C00597F2E /* ShapeLayerManager.swift in Sources */,
 				497BE96D22AE2FD800597F2E /* ViewController.swift in Sources */,
 				497BE9C222AF9D2C00597F2E /* GridManager.swift in Sources */,
 				497BE9BE22AF84AF00597F2E /* CGColor+Extension.swift in Sources */,
-				497BE9C422AFA43500597F2E /* LineChart.swift in Sources */,
 				497BE98D22AE7ED500597F2E /* StockChartViewController.swift in Sources */,
 				497BE96B22AE2FD800597F2E /* AppDelegate.swift in Sources */,
 				497BE99522AF380200597F2E /* UIScreen+Extension.swift in Sources */,
