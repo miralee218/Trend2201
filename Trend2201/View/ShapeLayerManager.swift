@@ -9,7 +9,7 @@
 import UIKit
 
 class ShapeLayerManager {
-    static func setShapeLayer(strokeColor: CGColor, layerFrame: CGRect) -> CAShapeLayer {
+    static func setShapeLayer(strokeColor: CGColor?, layerFrame: CGRect) -> CAShapeLayer {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = layerFrame
@@ -19,7 +19,7 @@ class ShapeLayerManager {
         return shapeLayer
     }
     
-    static func setShapeLayer(strokeColor: CGColor, fillColor: CGColor?, layerFrame: CGRect) -> CAShapeLayer {
+    static func setShapeLayer(strokeColor: CGColor?, fillColor: CGColor?, layerFrame: CGRect) -> CAShapeLayer {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = layerFrame

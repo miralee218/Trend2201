@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     var tickC = [Double]() //收價
     
-    var tickV = [Int]() //量
+    var tickV = [Double]() //量
     
     var tickH = [Double]() //最高收價
     
@@ -66,73 +66,14 @@ class ViewController: UIViewController {
         for minute in root.root.tick{
             tickT.append(Int(minute.t) ?? 0)
             tickC.append(Double(minute.c) ?? 0.0)
-            tickV.append(Int(minute.v) ?? 0)
+            tickV.append(Double(minute.v) ?? 0.0)
             tickH.append(Double(minute.h) ?? 0.0)
             tickL.append(Double(minute.l) ?? 0.0)
         }
         
-        print(tickL.min())
-        print(tickL.firstIndex(of: tickH.min()!))
-//
-//        var changeArray = false
-//        for i in tickC {
-//
-//            if i >= c && changeArray == false{
-//                array1.append(i)
-//            } else {
-//                changeArray = true
-//            }
-//        }
-//        tickC.removeFirst(array1.count)
-//
-//
-//        changeArray = false
-//        for i in tickC {
-//
-//            if i <= c && changeArray == false{
-//                array2.append(i)
-//            } else {
-//                changeArray = true
-//            }
-//        }
-//        tickC.removeFirst(array2.count)
-//
-//
-//        changeArray = false
-//        for i in tickC {
-//
-//            if i >= c && changeArray == false{
-//                array3.append(i)
-//            } else {
-//                changeArray = true
-//            }
-//        }
-//
-//        tickC.removeFirst(array3.count)
-//
-//
-//        changeArray = false
-//        for i in tickC {
-//
-//            if i <= c && changeArray == false{
-//                array4.append(i)
-//            } else {
-//                changeArray = true
-//            }
-//        }
-//        tickC.removeFirst(array4.count)
-//
-//        changeArray = false
-//        for i in tickC {
-//
-//            if i >= c && changeArray == false{
-//                array5.append(i)
-//            } else {
-//                changeArray = true
-//            }
-//        }
-//        tickC.removeFirst(array5.count)
-
+        print(tickV.max())
+        print(tickV[2])
+//        print(tickC.firstIndex(of: tickH.min()!))
 
     }
 

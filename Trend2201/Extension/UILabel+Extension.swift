@@ -20,4 +20,14 @@ extension UILabel {
         
     }
     
+    func setBarYLabelStlye(item: Double, bgColor: UIColor, textColor: UIColor) {
+        
+        self.text = String(format: "%.0f", Double(item))
+        
+        self.backgroundColor = bgColor
+        
+        self.textColor = textColor
+        
+    }
+    
 }
